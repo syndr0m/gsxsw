@@ -7,6 +7,10 @@ var http = require('http'), io = require('socket.io'); // for npm, otherwise use
 var fs = require('fs'), util = require('util');
 var url = require('url'), path = require('path');
 
+// inclusion client.
+var Client = require('./client.js');
+var Channel = require('./channel.js');
+
 // thanks to https://github.com/arunjitsingh/
 function findType(uri) {
   var types = {
@@ -68,16 +72,41 @@ server = http.createServer(function(request, response){
 	});
 });
 server.listen(80);
-  
+
+// 
+var clients = new Array();
+var channels = new Array();
+channels.nameToChannel = { };
+channels.findOrCreate = function (name) { // overloading push.
+	if (name in channels.nameToChannel)
+		return channels.nameToChannel[name];
+	var channel = new Channel(name);
+	channels.nameToChannel[name] = channel; 
+	channels.push(channel);
+	return channel;
+};
+
+
 // Fun stuff here :)
 var socket = io.listen(server); 
-socket.on('connection', function(client){
-	console.log('+new client');
+socket.on('connection', function(line){
+	var client = new Client(line, clients, channels);
+	clients.push(client);
 	// new client is here! 
-	client.on('message', function(data){ 
-		console.log('message: '+data);
-	}) 
-	client.on('disconnect', function(data){
+	line.on('message', function(data){ 
+		console.log('message : '+data);
+		data = JSON.parse(data);
+		if (data.length > 0) {
+			var f = data.shift();
+			client[f].apply(client, data);
+		}
+	});
+	line.on('disconnect', function(data){
+		var p = clients.indexOf(client);
+		if (p >= 0) {
+			console.log('client does not exist ?');
+			clients.splice(p, 1);
+		}
 		console.log('disconnected');
 	})
 }); 

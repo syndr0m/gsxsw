@@ -3,6 +3,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
 	<script type="text/javascript" src="socket.io.js"></script> 
 	<script type="text/javascript">
+	// functions...
+	var client = { };
+	client.display = function (channelName, message) {
+		$("#messages").append('channel name: ' + channelName + ' : ' + message+'<br/>');
+	};
+
 	$(function () {
 		// awful
 		var host = new String(document.location).split('/')[2];
@@ -13,19 +19,34 @@
 			socket = new io.Socket(host);
 			socket.connect();
 			socket.on('connect', function(){ $(document).trigger("connected"); });
-			socket.on('message', function(){ $(document).trigger("message"); });
+			socket.on('message', function(data){ $(document).trigger("message", data); });
 			socket.on('disconnect', function(){ $(document).trigger("disconnected"); });
 		});
 		$("input.disconnect").click(function () {
 			socket.disconnect();
 		});
-		$("input.send").click(function () { socket.send($("input.message").val()); });
+		$("input.send").click(function () { 
+			socket.send(JSON.stringify(["push", "Default", $("input.message").val()]));
+		});
 		// connection/disconnection : custom events.
 		$(document).bind("disconnected", function () {
 			$("input.connect").show(); $("#panel").hide();
 		});
+		// 
 		$(document).bind("connected", function () {
 			$("input.connect").hide(); $("#panel").show();
+			// registering default channel
+			socket.send(JSON.stringify(["register", "Default"]));
+			// pulling default channel
+			socket.send(JSON.stringify(["pull", "Default", 40]));
+		});
+		$(document).bind("message", function (e, data) {
+			data = JSON.parse(data);
+			if (data.length > 0) {
+				console.log(data);
+				var f = data.shift();
+				client[f].apply(client, data);
+			}
 		});
 	});
 	</script>
@@ -34,7 +55,11 @@
 	<input value="connect" type="button" class="connect"/>
 	<div id="panel" style="display:none">
 		message : <input class="message" type="text"/><input type="button" value="send" class="send"/><br/>
-		<input type="button" value="disconnect" class="disconnect"/>
+		<input type="button" value="disconnect" class="disconnect"/><br/>
+		<br/>
+		<div id="messages" style="border: 3px solid #555555;">
+			
+		</div>
 	</div>
 </body>
 </html>
