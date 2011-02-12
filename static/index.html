@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+	<script type="text/javascript" src="socket.io.js"></script> 
+	<script type="text/javascript">
+	$(function () {
+		// awful
+		var host = new String(document.location).split('/')[2];
+		
+		// using custom events.
+		var socket;
+		$("input.connect").click(function () {
+			socket = new io.Socket(host);
+			socket.connect();
+			socket.on('connect', function(){ $(document).trigger("connected"); });
+			socket.on('message', function(){ $(document).trigger("message"); });
+			socket.on('disconnect', function(){ $(document).trigger("disconnected"); });
+		});
+		$("input.disconnect").click(function () {
+			socket.disconnect();
+		});
+		$("input.send").click(function () { socket.send($("input.message").val()); });
+		// connection/disconnection : custom events.
+		$(document).bind("disconnected", function () {
+			$("input.connect").show(); $("#panel").hide();
+		});
+		$(document).bind("connected", function () {
+			$("input.connect").hide(); $("#panel").show();
+		});
+	});
+	</script>
+</head>
+<body>
+	<input value="connect" type="button" class="connect"/>
+	<div id="panel" style="display:none">
+		message : <input class="message" type="text"/><input type="button" value="send" class="send"/><br/>
+		<input type="button" value="disconnect" class="disconnect"/>
+	</div>
+</body>
+</html>
