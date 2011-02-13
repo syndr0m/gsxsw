@@ -5,8 +5,8 @@
 	<script type="text/javascript">
 	// functions...
 	var client = { };
-	client.display = function (channelName, message) {
-		$("#messages").append('channel name: ' + channelName + ' : ' + message+'<br/>');
+	client.display = function (channelName, data) {
+		$("#messages").append('channel name: ' + channelName + ' : ' + data.message+'<br/>');
 	};
 
 	$(function () {
@@ -26,7 +26,7 @@
 			socket.disconnect();
 		});
 		$("input.send").click(function () { 
-			socket.send(JSON.stringify(["push", "Default", $("input.message").val()]));
+			socket.send(JSON.stringify(["push", "Default", { 'message' : $("input.message").val(), 'important' : false, 'repost' : false }]));
 		});
 		// connection/disconnection : custom events.
 		$(document).bind("disconnected", function () {
