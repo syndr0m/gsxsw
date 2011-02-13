@@ -1,10 +1,10 @@
-body {	
-	font-family: Arial, Helvetica, Verdana, sans-serif;	
-	color: #333;	
-	background-color: #fff;
-	margin: 1em;
-	background-repeat: repeat;
-	font-size: 0.8em;
+body {  
+    font-family: Arial, Helvetica, Verdana, sans-serif; 
+    color: #333;    
+    background-color: #fff;
+    margin: 1em;
+    background-repeat: repeat;
+    font-size: 0.8em;
 }
 
 h1 a,
@@ -12,22 +12,22 @@ h1 a:link,
 h1 a:visited,
 h1 a:hover,
 h1 a:active {
-	color: #333;
-	border-bottom: 0px;
-	font-weight: bold;
-	font-size: 2.5em;
-	letter-spacing: -0.08em;	
+    color: #333;
+    border-bottom: 0px;
+    font-weight: bold;
+    font-size: 2.5em;
+    letter-spacing: -0.08em;    
 }
 
 .header,
 .footer {
-	margin: 0em;
-	padding: 0em;
-	clear: both;
+    margin: 0em;
+    padding: 0em;
+    clear: both;
 }
 
 .footer {
-	padding-top: 1.5em;
+    padding-top: 1.5em;
 }
 
 a,
@@ -35,11 +35,11 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-	color: #333;
-	font-weight: 800;
-	text-decoration: none;
-	line-height: 1em;	
-	border-bottom: 1px dotted #888;
+    color: #333;
+    font-weight: 800;
+    text-decoration: none;
+    line-height: 1em;   
+    border-bottom: 1px dotted #888;
 }
 
 #main {
@@ -53,9 +53,10 @@ a:active {
     width: 35%;
     top: 0px;
     left: 0px;
-   	padding: 0.5em; 
-   	overflow: hidden;
-   	height: 90%;
+    padding: 0.5em; 
+    overflow: hidden;
+    height: 90%;
+    margin-top: 1em;    
 }
 
 #main .summary .title {
@@ -81,19 +82,16 @@ a:active {
 #main .media {  
     float: left;
     clear: both;  
-    float: left;
-    bottom: 0px;
-    left: 0px;
+    margin-top: 2em;
     width: 35%;
     height: 40%;
     margin-left: 1%;
     vertical-align: bottom;
 }
 
-#myFeed {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+#myLiveNowFeed {
+    float: right;
     overflow: visible;
-    z-index: 2;
+    width: 60%;
+    margin-top: 10px;
 }
