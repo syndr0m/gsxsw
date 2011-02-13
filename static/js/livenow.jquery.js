@@ -13,7 +13,7 @@
          socket.on('connect', function(){ $(document).trigger("connected"); });
          socket.on('message', function(data){
             console.log('recieved: '+data);
-            $(document).trigger("message", JSON.parse(data));
+            $(document).trigger("message", [JSON.parse(data)]);
          });
          socket.on('disconnect', function(){ $(document).trigger("disconnected"); });
 
