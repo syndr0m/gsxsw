@@ -1,0 +1,56 @@
+<!doctype html>  
+<html>
+    <head>
+        <title>Guardian Hacks SXSW 2011</title>        
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="http://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7Bname%3A%22maps%22%2Cversion%3A3%2Cother_params%3A%22sensor%3Dfalse%22%7D%2C%7B%22name%22%3A%22jquery%22%2C%22version%22%3A%221.3.2%22%7D%2C%7B%22name%22%3A%22jqueryui%22%2C%22version%22%3A%221.7.2%22%7D%5D%7D"></script>                
+        <script type="text/javascript" src="js/socket.io.js"></script>        
+        <script type="text/javascript" src="js/livenow.jquery.js"></script>        
+        <script type="text/javascript" src="js/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/livenow.css" />                
+        <link rel="stylesheet" type="text/css" href="css/style.css" />    
+        <script>
+            jQuery(document).ready(function() {    
+                jQuery('#myLiveNowFeed').livenow('#GSXSW');
+            });
+        </script>    
+    </head>
+    <body>
+        <div id="container">                                            
+            <header>
+                <div class="header">
+                    <h1><a href="./">Page Title</a></h1>
+                </div>
+            </header>
+
+            <div id="nav">        
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="./">Live Feed</a></li>
+                    <li><a href="editor/">Live Feed Editor</a></li>
+                </ul>
+            </div>
+    
+            <div id="main">
+                <h2>Live Feed</h2>
+                <div class="summary">
+                    <div class="title">Title</div>
+                    <div class="byline">byline....</div>
+                    <div class="description">description</div>
+                    <div class="media">Media (e.g. image thumbnails)</div>
+                 </div>                                
+                <div id="myLiveNowFeed"></div>
+            </div>            
+
+            <footer>
+                <div class="footer">
+                    <p>
+                        -- Footer --
+                    </p>
+                    <a href="http://validator.w3.org/check?uri=referer">W3C Validator</a>
+                </div>    
+            </footer>
+
+        </div>
+    </body>
+</html>

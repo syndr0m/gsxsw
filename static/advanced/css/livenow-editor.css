@@ -1,0 +1,120 @@
+
+#livenow-editor {
+    position: relative;
+    background: #fff;
+}
+
+
+#livenow-editor .summary {
+    position: absolute;
+    width: 35%;
+    top: 0px;
+    left: 0px;
+   	padding: 0.5em; 
+}
+
+#livenow-editor .summary .title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+#livenow-editor .summary .byline {
+    font-weight: bold;
+    margin-bottom: 1em;    
+}
+
+#livenow-editor .summary .description {
+
+}
+
+#livenow-editor .media {  
+
+}
+
+#livenow-editor .media {    
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 35%;
+    height: 40%;
+    margin-left: 1%;
+    vertical-align: bottom;
+}
+
+#livenow-editor .feed {    
+    background: #ddd;
+    border: 3px solid #ccc;
+    width: 60%;
+    float: right;
+    clear: none; 
+    z-index: 2px;
+    overflow: auto;
+}
+
+#livenow-editor .comment {
+    position: relative;
+    border: 3px solid #ccc;
+    border-top: 0px;
+    background: #fff;
+    width: 60%;
+    clear: both;
+    float: right;
+    height: 100px;
+}
+
+#livenow-editor .comment textarea {
+    border: 0px;
+    height: 90px;
+    padding: 5px;
+    resize: none;    
+}
+
+#livenow-editor .comment button {
+	float: left;
+	margin: 0;
+	color: #444;
+	position: absolute;
+    bottom: -35px;
+    right: 0px;
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;	
+	font-size: 0.9em;
+	font-weight: bold;
+	text-shadow: #fff 0px 1px 0px;	
+	border-width: 2px;
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');	
+	padding: 5px;	
+	padding-left: 10px;
+	padding-right: 10px;
+    width: 90px;
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;	
+	
+}
+
+#livenow-editor .comment button :hover {
+	text-decoration: none;
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');	
+}
+
+#livenow-editor .comment button :active {
+	position: relative;
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+
