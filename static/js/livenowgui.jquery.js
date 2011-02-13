@@ -37,7 +37,7 @@ function scrollToBottom() {
 
 function resize() {       
     $('.livenow .messages').css({
-        "height" : ($(window).height() - 200) + 'px'                   
+        "height" : ($(window).height() - 80) + 'px'                   
     });
 }
 
