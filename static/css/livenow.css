@@ -91,11 +91,9 @@
 }
 
 .livenow .messages .message .icon {
-    dfloat: left;
-    text-align: right;
-    vertical-align: top;
-    ddisplay: block;
-    margin-right: 1em;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
 
 .livenow .messages .message {
@@ -106,4 +104,10 @@
     display: block;   
     clear: both;
     overflow: auto;
+    position: relative;    
+    min-height: 60px;
+}
+
+.livenow .messages .message .messageText {
+    padding-left: 60px;   
 }
