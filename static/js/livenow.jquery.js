@@ -20,7 +20,8 @@
          // OUTPUTS
          $(document).bind("send", function (e) {
             var data = [];
-            for (i in arguments) { if (i > 0) { data.push(arguments[i]); }}
+            for (var i = 0; i < arguments.length; ++i)
+               if (i > 0) { data.push(arguments[i]); }
             console.log('send: '+JSON.stringify(data));
             socket.send(JSON.stringify(data));
          });
